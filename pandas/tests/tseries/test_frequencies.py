@@ -551,6 +551,20 @@ class TestFrequencyInference(object):
         for day in days:
             self._check_generated_range('1/1/2000', 'W-%s' % day)
 
+    @pytest.mark.parametrize("day,expected_days,expected_freq", [
+        ('MON', ['2000-01-31', '2000-02-28'], 'LWOM-MON'),
+        ('TUE', ['2000-01-25', '2000-02-29'], 'LWOM-TUE'),
+        ('WED', ['2000-01-26', '2000-02-23'], 'LWOM-WED'),
+        ('THU', ['2000-01-27', '2000-02-24'], 'LWOM-THU'),
+        ('FRI', ['2000-01-28', '2000-02-25'], 'LWOM-FRI'),
+        ('SUN', ['2000-01-30', '2000-02-27'], 'LWOM-SUN'),
+    ])
+    def test_last_week_of_month(self, day, expected_days, expected_freq):
+        dt_index = date_range('1/1/2000', periods=2, freq='LWOM-%s' % day)
+        expected_days = np.array(expected_days, dtype='datetime64[ns]')
+        assert all(dt_index.values == expected_days)
+        assert dt_index.freq == expected_freq
+
     def test_week_of_month(self):
         days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
 
