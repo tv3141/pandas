@@ -1182,6 +1182,8 @@ frequencies. We will refer to these aliases as *offset aliases*.
     "L, ms", "milliseconds"
     "U, us", "microseconds"
     "N", "nanoseconds"
+    "WOM, "x-th day of the y-th week of each month frequency"
+    "LWOM", "x-th day of the last week of each month frequency"
 
 Combining Aliases
 ~~~~~~~~~~~~~~~~~
@@ -1219,6 +1221,17 @@ For some frequencies you can specify an anchoring suffix:
     "W\-THU", "weekly frequency (Thursdays)"
     "W\-FRI", "weekly frequency (Fridays)"
     "W\-SAT", "weekly frequency (Saturdays)"
+    "WOM\-1TUE", "monthly frequence (first Tuesdays in months)"
+    "WOM\-2TUE", "monthly frequence (second Tuesdays in months)"
+    "WOM\-3TUE", "monthly frequence (third Tuesdays in months)"
+    "WOM\-4TUE", "monthly frequence (fourth Tuesdays in months)"
+    "LWOM\-MON", "monthly frequency (last Mondays in months)"
+    "LWOM\-TUE", "monthly frequency (last Tuesdays in months)"
+    "LWOM\-WED", "monthly frequency (last Wednesdays in months)"
+    "LWOM\-THU", "monthly frequency (last Thursdays in months)"
+    "LWOM\-FRI", "monthly frequency (last Fridays in months)"
+    "LWOM\-SAT", "monthly frequency (last Saturdays in months)"
+    "LWOM\-SUN", "monthly frequency (last Sundays in months)"
     "(B)Q(S)\-DEC", "quarterly frequency, year ends in December. Same as 'Q'"
     "(B)Q(S)\-JAN", "quarterly frequency, year ends in January"
     "(B)Q(S)\-FEB", "quarterly frequency, year ends in February"
@@ -1247,6 +1260,12 @@ For some frequencies you can specify an anchoring suffix:
 These can be used as arguments to ``date_range``, ``bdate_range``, constructors
 for ``DatetimeIndex``, as well as various other timeseries-related functions
 in pandas.
+
+.. ipython:: python
+
+    pd.date_range('2014-01-01', periods=2, freq='WOM-2TUE')
+
+    pd.date_range('2014-01-01', periods=2, freq='LWOM-TUE')
 
 Anchored Offset Semantics
 ~~~~~~~~~~~~~~~~~~~~~~~~~
