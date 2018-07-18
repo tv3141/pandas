@@ -785,7 +785,7 @@ which represents a regular frequency increment. Specific offset logic like
     BYearBegin, "BAS, BYS", "business year begin"
     FY5253, "", "retail (aka 52-53 week) year"
     BusinessHour, "BH", "business hour"
-    CustomBusinessHour, "", "custom business hour"
+    CustomBusinessHour, "CBH", "custom business hour"
     Hour, "H", "one hour"
     Minute, "T, min", "one minute"
     Second, "S", "one second"
