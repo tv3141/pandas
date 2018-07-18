@@ -793,6 +793,14 @@ which represents a regular frequency increment. Specific offset logic like
     Micro, "U, us", "one microsecond"
     Nano, "N", "one nanosecond"
 
+For the frequency keyword a short *offset alias* can be used instead of an
+Offset object:
+
+.. ipython:: python
+    pd.date_range('2014-01-01', periods=5, freq=LastWeekOfMonth(weekday=6))
+
+    pd.date_range('2014-01-01', periods=5, freq='LWOM-SUN')
+
 The basic ``DateOffset`` takes the same arguments as
 ``dateutil.relativedelta``, which works as follows:
 
