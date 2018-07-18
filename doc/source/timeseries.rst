@@ -757,41 +757,41 @@ which represents a regular frequency increment. Specific offset logic like
 "month", "business day", or "one hour" is represented in its various subclasses.
 
 .. csv-table::
-    :header: "Class name", "Description"
-    :widths: 15, 65
+    :header: "Class name", "Offset aliases", "Description"
+    :widths: 15, 35, 65
 
     DateOffset, "Generic offset class, defaults to 1 calendar day"
-    BDay, "business day (weekday)"
-    CDay, "custom business day"
-    Week, "one week, optionally anchored on a day of the week"
-    WeekOfMonth, "the x-th day of the y-th week of each month"
-    LastWeekOfMonth, "the x-th day of the last week of each month"
-    MonthEnd, "calendar month end"
-    MonthBegin, "calendar month begin"
-    BMonthEnd, "business month end"
-    BMonthBegin, "business month begin"
-    CBMonthEnd, "custom business month end"
-    CBMonthBegin, "custom business month begin"
-    SemiMonthEnd, "15th (or other day_of_month) and calendar month end"
-    SemiMonthBegin, "15th (or other day_of_month) and calendar month begin"
-    QuarterEnd, "calendar quarter end"
-    QuarterBegin, "calendar quarter begin"
-    BQuarterEnd, "business quarter end"
-    BQuarterBegin, "business quarter begin"
-    FY5253Quarter, "retail (aka 52-53 week) quarter"
-    YearEnd, "calendar year end"
-    YearBegin, "calendar year begin"
-    BYearEnd, "business year end"
-    BYearBegin, "business year begin"
-    FY5253, "retail (aka 52-53 week) year"
-    BusinessHour, "business hour"
-    CustomBusinessHour, "custom business hour"
-    Hour, "one hour"
-    Minute, "one minute"
-    Second, "one second"
-    Milli, "one millisecond"
-    Micro, "one microsecond"
-    Nano, "one nanosecond"
+    BDay, "B", "business day (weekday)"
+    CDay, "C", "custom business day"
+    Week, "W", "one week, optionally anchored on a day of the week"
+    WeekOfMonth, "WOM-[1|2|3|4][MON|TUE|WED|THU|FRI|SAT|SUN]", "the x-th day of the y-th week of each month"
+    LastWeekOfMonth, "LWOM-[MON|TUE|WED|THU|FRI|SAT|SUN]", "the x-th day of the last week of each month"
+    MonthEnd, "M", "calendar month end"
+    MonthBegin, "MS", "calendar month begin"
+    BMonthEnd, "BM", "business month end"
+    BMonthBegin, "BMS", "business month begin"
+    CBMonthEnd, "CBM", "custom business month end"
+    CBMonthBegin, "CBMS", "custom business month begin"
+    SemiMonthEnd, "SM", "15th (or other day_of_month) and calendar month end"
+    SemiMonthBegin, "SMS", "15th (or other day_of_month) and calendar month begin"
+    QuarterEnd, "Q", "calendar quarter end"
+    QuarterBegin, "QS", "calendar quarter begin"
+    BQuarterEnd, "BQ", "business quarter end"
+    BQuarterBegin, "BQS", "business quarter begin"
+    FY5253Quarter, "", "retail (aka 52-53 week) quarter"
+    YearEnd, "A, Y", "calendar year end"
+    YearBegin, "AS, YS", "calendar year begin"
+    BYearEnd, "BA, BY", "business year end"
+    BYearBegin, "BAS, BYS", "business year begin"
+    FY5253, "", "retail (aka 52-53 week) year"
+    BusinessHour, "BH", "business hour"
+    CustomBusinessHour, "", "custom business hour"
+    Hour, "H", "one hour"
+    Minute, "T, min", "one minute"
+    Second, "S", "one second"
+    Milli, "L, ms", "one millisecond"
+    Micro, "U, us", "one microsecond"
+    Nano, "N", "one nanosecond"
 
 The basic ``DateOffset`` takes the same arguments as
 ``dateutil.relativedelta``, which works as follows:
@@ -1142,46 +1142,6 @@ You can use keyword arguments supported by either ``BusinessHour`` and ``CustomB
 
     # Monday is skipped because it's a holiday, business hour starts from 10:00
     dt + bhour_mon * 2
-
-.. _timeseries.offset_aliases:
-
-Offset Aliases
-~~~~~~~~~~~~~~
-
-A number of string aliases are given to useful common time series
-frequencies. We will refer to these aliases as *offset aliases*.
-
-.. csv-table::
-    :header: "Alias", "Description"
-    :widths: 15, 100
-
-    "B", "business day frequency"
-    "C", "custom business day frequency"
-    "D", "calendar day frequency"
-    "W", "weekly frequency"
-    "M", "month end frequency"
-    "SM", "semi-month end frequency (15th and end of month)"
-    "BM", "business month end frequency"
-    "CBM", "custom business month end frequency"
-    "MS", "month start frequency"
-    "SMS", "semi-month start frequency (1st and 15th)"
-    "BMS", "business month start frequency"
-    "CBMS", "custom business month start frequency"
-    "Q", "quarter end frequency"
-    "BQ", "business quarter end frequency"
-    "QS", "quarter start frequency"
-    "BQS", "business quarter start frequency"
-    "A, Y", "year end frequency"
-    "BA, BY", "business year end frequency"
-    "AS, YS", "year start frequency"
-    "BAS, BYS", "business year start frequency"
-    "BH", "business hour frequency"
-    "H", "hourly frequency"
-    "T, min", "minutely frequency"
-    "S", "secondly frequency"
-    "L, ms", "milliseconds"
-    "U, us", "microseconds"
-    "N", "nanoseconds"
 
 Combining Aliases
 ~~~~~~~~~~~~~~~~~
